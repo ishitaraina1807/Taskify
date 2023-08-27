@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+    --transition-duration: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.dark-theme {
+    background-image: url(./images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: hsl(235, 21%, 11%);
+    transition: background-color var(--transition-duration),
+        color var(--transition-duration),
+        opacity var(--transition-duration),
+        transform var(--transition-duration);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.light-theme {
+    background-image: url(./images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: hsl(0, 0%, 98%);
+    transition: background-color var(--transition-duration),
+        color var(--transition-duration),
+        opacity var(--transition-duration),
+        transform var(--transition-duration);
+    opacity: 1;
+    transform: translateY(0);
+}
+.todo-container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 20rem;
+    margin-top: 5rem;
+}
+.todo-container h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 10px;
+}
+.todo-container img{
+    width: 1.2rem;
+}
+.input{
+    width: 30rem;
+    height: 3.5rem;
+}
+
+input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="checkbox"] + label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  input[type="checkbox"] + label::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #00cc00; 
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  input[type="checkbox"]:checked + label::after {
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  
