@@ -54,7 +54,7 @@ const ThemeToggler = () => {
                 </button>
             </div>
             <div className='flex items-center justify-center'>
-                <div className={`relative mt-4 rounded-md shadow-sm`}>
+                <div className={`relative mt-4 rounded-md shadow-sm item-center`}>
                     <FontAwesomeIcon
                         icon={faCircle}
                         className="text-gray-600 absolute inset-y-0 left-0 m-4 text-lg" 
@@ -76,7 +76,7 @@ const ThemeToggler = () => {
                     {items.map((item, index) => (
                         <span
                             key={index}
-                            className={`input ${inputBgClass} block rounded-md border-0 py-1.5 pl-12 pr-20 ${inputTextClass} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus: sm:text-base sm:leading-6`}
+                            className={`input ${inputBgClass} block  border py-1.5 pl-12 pr-20 ${inputTextClass} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus: sm:text-base sm:leading-6`}
                         >
                             {item}
                         </span>
