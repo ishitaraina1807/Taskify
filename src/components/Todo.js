@@ -9,6 +9,7 @@ const Todo = () => {
     const [theme, setTheme] = useState('light');
     const [inputValue, setInputValue] = useState('');
     const [items, setItems] = useState([]);
+    const [hoveredItemIndex, setHoveredItemIndex] = useState(null);
 
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
@@ -37,21 +38,21 @@ const Todo = () => {
         setItems(updatedItems);
     };
 
-    const inputBgClass = theme === 'dark' ? 'bg-darkgreyblue' : 'bg-gray-100';
+    const handleMouseEnter = (index) => {
+        setHoveredItemIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredItemIndex(null);
+    };
+
+    const inputBgClass = theme === 'dark' ? 'bg-darkgreyblue' : 'bg-white';
     const inputTextClass = theme === 'dark' ? 'text-light-grey-blue' : 'text-darkgreyblue';
     const containerStyle = {
         height: '300px',
     };
-
     document.documentElement.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleEnterPress);
-        return () => {
-            window.removeEventListener('keydown', handleEnterPress);
-        };
-    }, [items]);
-    
     return (
         <div className="container" style={containerStyle}>
             <div className="todo-container">
@@ -80,27 +81,35 @@ const Todo = () => {
             </div>
             <div className='flex items-center justify-center'>
                 <div className={`relative mt-4 rounded-md shadow-sm`}>
-                {items.map((item, index) => (
-    <div key={index} className={`input-box ${inputBgClass} flex items-center box-container border rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? 'line-through text-gray-400' : ''}`}>
-        <label className="flex items-center">
-            <input
-                type="checkbox"
-                checked={item.checked}
-                onChange={() => handleCheckboxChange(index)
-                }
-            />
-            <span className="checkmark"></span>
-        </label>
-        <span className="mr-4">{item.text}</span>
-        <img
-            src={cross}
-            onClick={() => handleDeleteItem(index)}
-            className="w-4 h-4 ml-auto cursor-pointer"
-        />
-    </div>
-))}
+
+                    {items.map((item, index) => (
+                        <div
+                            key={index}
+                            className={`input-box ${inputBgClass} flex items-center box-container border rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? 'line-through text-gray-400' : ''}`}
+                            onMouseEnter={() => handleMouseEnter(index)}
+                            onMouseLeave={() => handleMouseLeave(index)}
+                        >
+                            <label className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    checked={item.checked}
+                                    onChange={() => handleCheckboxChange(index)}
+                                />
+                                <span className="checkmark"></span>
+                            </label>
+                            <span className="mr-4">{item.text}</span>
+                            <img
+                                src={cross}
+                                onClick={() => handleDeleteItem(index)}
+                                className={`w-4 h-4 ml-auto cursor-pointer cross-icon ${hoveredItemIndex === index ? 'visible' : 'hidden'}`}
+                                style={{ transition: 'opacity 0.7s' }} 
+                            />
+                        </div>
+                    ))}
+
                 </div>
             </div>
+
         </div>
     );
 };
