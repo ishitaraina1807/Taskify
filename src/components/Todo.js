@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import cross from '../images/cross.svg';
 
-const ThemeToggler = () => {
+const Todo = () => {
     const [theme, setTheme] = useState('light');
     const [inputValue, setInputValue] = useState('');
     const [items, setItems] = useState([]);
@@ -108,4 +108,4 @@ const ThemeToggler = () => {
     );
 };
 
-export default ThemeToggler;
+export default Todo;
