@@ -51,7 +51,7 @@ const Todo = () => {
             window.removeEventListener('keydown', handleEnterPress);
         };
     }, [items]);
-
+    
     return (
         <div className="container" style={containerStyle}>
             <div className="todo-container">
@@ -80,7 +80,6 @@ const Todo = () => {
             </div>
             <div className='flex items-center justify-center'>
                 <div className={`relative mt-4 rounded-md shadow-sm`}>
-
                 {items.map((item, index) => (
     <div key={index} className={`input-box ${inputBgClass} flex items-center box-container border rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? 'line-through text-gray-400' : ''}`}>
         <label className="flex items-center">
@@ -100,10 +99,8 @@ const Todo = () => {
         />
     </div>
 ))}
-
                 </div>
             </div>
-
         </div>
     );
 };
