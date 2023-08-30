@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         'lightgrey': 'hsl(236, 33%, 92%)', 
         'darkgreyblue': 'hsl(235, 24%, 19%)', 
-        'custom-green': '#969e42', 
+        'light-grey-blue': 'hsl(234, 39%, 85%)', 
         'custom-darkyellow': '#f5a560', 
         'custom-grey': '#989189', 
         'custom-tint': '#fff7f0', 
