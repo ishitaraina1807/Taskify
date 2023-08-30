@@ -53,40 +53,39 @@ body {
 .todo-container img{
     width: 1.2rem;
 }
-.input{
+.input-box{
     width: 30rem;
     height: 3.5rem;
 }
+.box-container{
+    display: flex;
+}
+.input-box img:hover{
+cursor: pointer;
+}
 
-input[type="checkbox"] {
+.input-box input[type="checkbox"] {
     display: none;
-  }
-  
-  input[type="checkbox"] + label {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
+}
+
+.input-box label {
     cursor: pointer;
     position: relative;
-  }
-  
-  input[type="checkbox"] + label::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background-color: #00cc00; 
-    border-radius: 50%;
+    padding-left: 25px;
+    margin-right: 10px;
+    margin-top: -20.5px;
+}
+
+.input-box label::before {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0); 
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  input[type="checkbox"]:checked + label::after {
-    transform: translate(-50%, -50%) scale(1); 
-  }
-  
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+
+
