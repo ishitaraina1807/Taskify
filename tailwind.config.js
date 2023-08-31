@@ -10,7 +10,7 @@ module.exports = {
         'lightgrey': 'hsl(236, 33%, 92%)', 
         'darkgreyblue': 'hsl(235, 24%, 19%)', 
         'light-grey-blue': 'hsl(234, 39%, 85%)', 
-        'custom-darkyellow': '#f5a560', 
+        'verydarkgreyblue': 'hsl(235, 19%, 35%)', 
         'custom-grey': '#989189', 
         'custom-tint': '#fff7f0', 
         'custom-red': '#ea7564', 
