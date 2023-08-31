@@ -10,7 +10,8 @@ const Todo = () => {
     const [inputValue, setInputValue] = useState('');
     const [items, setItems] = useState([]);
     const [hoveredItemIndex, setHoveredItemIndex] = useState(null);
-
+    const [activeSection, setActiveSection] = useState('All');
+    const [filteredItems, setFilteredItems] = useState(items);
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
@@ -46,11 +47,34 @@ const Todo = () => {
         setHoveredItemIndex(null);
     };
 
+    const itemsLeft = filteredItems.filter(item => !item.checked).length;
     const inputBgClass = theme === 'dark' ? 'bg-darkgreyblue' : 'bg-white';
     const inputTextClass = theme === 'dark' ? 'text-light-grey-blue' : 'text-darkgreyblue';
+    const boderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
+    const strikethroughText = theme === 'dark' ? 'text-gray-500' : 'text-gray-300'
     const containerStyle = {
         height: '300px',
     };
+
+    useEffect(() => {
+        if (activeSection === 'All') {
+            setFilteredItems(items);
+            console.log("all")
+        } else if (activeSection === 'Active') {
+            const activeItems = items.filter(item => !item.checked);
+            setFilteredItems(activeItems);
+            console.log("active")
+        } else if (activeSection === 'Completed') {
+            const completedItems = items.filter(item => item.checked);
+            setFilteredItems(completedItems);
+            console.log("completed")
+        }
+    }, [activeSection, items]);
+
+    const handleSectionChange = (section) => {
+        setActiveSection(section);
+    };
+
     document.documentElement.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
 
     return (
@@ -82,10 +106,10 @@ const Todo = () => {
             <div className='flex items-center justify-center'>
                 <div className={`relative mt-4 rounded-md shadow-sm`}>
 
-                    {items.map((item, index) => (
+                    {filteredItems.map((item, index) => (
                         <div
                             key={index}
-                            className={`input-box ${inputBgClass} flex items-center box-container border rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? 'line-through text-gray-400' : ''}`}
+                            className={`input-box ${inputBgClass} flex items-center box-container shadow-lg border ${boderColor} rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? `line-through ${strikethroughText}` : ''} : ''}`}
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={() => handleMouseLeave(index)}
                         >
@@ -109,7 +133,45 @@ const Todo = () => {
 
                 </div>
             </div>
-
+            <div className='flex items-center justify-center'>
+                <div className={`relative rounded-md shadow-lg item-center`}>
+                    <div
+                        className={`last-box ${inputBgClass} py-2.5 pl-4 pr-4 block rounded-sm border ${boderColor} text-gray-400 focus: sm:text-base sm:leading-6 `} >
+                        <span> 
+                            {itemsLeft} item{itemsLeft !== 1 ? 's' : ''} left
+                        </span>
+                        <div className="sections flex">
+                        <p
+                                className={`cursor-pointer ${activeSection === 'All' ? 'text-blue-500' : 'text-gray-400'}`}
+                                onClick={() => handleSectionChange('All')}
+                            >
+                                All
+                            </p>
+                            <p
+                                className={`cursor-pointer ${activeSection === 'Active' ? 'text-blue-500' : 'text-gray-400'}`}
+                                onClick={() => handleSectionChange('Active')}
+                            >
+                                Active
+                            </p>
+                            <p
+                                className={`cursor-pointer ${activeSection === 'Completed' ? 'text-blue-500' : 'text-gray-400'}`}
+                                onClick={() => handleSectionChange('Completed')}
+                            >
+                                Completed
+                            </p>
+                        </div>
+                        <div
+                            className="hover:text-verydarkgreyblue hover:cursor-pointer"
+                            onClick={() => {
+                                const remainingItems = items.filter(item => !item.checked);
+                                setItems(remainingItems);
+                            }}
+                        >
+                            Clear Completed
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
