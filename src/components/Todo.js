@@ -4,6 +4,7 @@ import moon from '../images/moon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import cross from '../images/cross.svg';
+import check from '../images/check.svg';
 
 const Todo = () => {
     const [theme, setTheme] = useState('light');
@@ -51,7 +52,7 @@ const Todo = () => {
     const inputBgClass = theme === 'dark' ? 'bg-darkgreyblue' : 'bg-white';
     const inputTextClass = theme === 'dark' ? 'text-light-grey-blue' : 'text-darkgreyblue';
     const boderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
-    const strikethroughText = theme === 'dark' ? 'text-gray-500' : 'text-gray-300'
+    const strikethroughText = theme === 'dark' ? 'text-gray-700' : 'text-gray-300'
     const containerStyle = {
         height: '300px',
     };
@@ -89,13 +90,13 @@ const Todo = () => {
                 <div className={`relative mt-4 rounded-md shadow-sm item-center`}>
                     <FontAwesomeIcon
                         icon={faCircle}
-                        className="text-gray-600 absolute inset-y-0 left-0 m-4 text-lg"
+                        className="text-gray-400 absolute inset-y-0 left-0 mx-4 my-6 text-xl"
                     />
                     <input
                         type="text"
                         name="todo"
                         id="todo"
-                        className={`input-box ${inputBgClass} block rounded-sm border-0 py-1.5 pl-12 pr-20 ${inputTextClass} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus: sm:text-base sm:leading-6`}
+                        className={`input-box ${inputBgClass} block rounded-sm border-0 py-1.5 pl-12 pr-20 ${inputTextClass} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus: sm:text-lg sm:leading-6`}
                         placeholder="Create a new todo..."
                         value={inputValue}
                         onChange={handleInputChange}
@@ -105,11 +106,10 @@ const Todo = () => {
             </div>
             <div className='flex items-center justify-center'>
                 <div className={`relative mt-4 rounded-md shadow-sm`}>
-
                     {filteredItems.map((item, index) => (
                         <div
                             key={index}
-                            className={`input-box ${inputBgClass} flex items-center box-container shadow-lg border ${boderColor} rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? `line-through ${strikethroughText}` : ''} : ''}`}
+                            className={`input-box ${inputBgClass} flex items-center box-container shadow-lg border text-lg ${boderColor} rounded-sm py-3.5 pl-4 pr-4 ${inputTextClass} ${item.checked ? `line-through ${strikethroughText}` : ''}`}
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={() => handleMouseLeave(index)}
                         >
@@ -119,14 +119,16 @@ const Todo = () => {
                                     checked={item.checked}
                                     onChange={() => handleCheckboxChange(index)}
                                 />
-                                <span className="checkmark"></span>
+                                <span className="checkmark flex check-img">
+                                    {item.checked && <img className="block" src={check} alt="check" />}
+                                </span>
                             </label>
                             <span className="mr-4">{item.text}</span>
                             <img
                                 src={cross}
                                 onClick={() => handleDeleteItem(index)}
-                                className={`w-4 h-4 ml-auto cursor-pointer cross-icon ${hoveredItemIndex === index ? 'visible' : 'hidden'}`}
-                                style={{ transition: 'opacity 0.7s' }} 
+                                className={`w-5 h-5 ml-auto cursor-pointer cross-icon ${hoveredItemIndex === index ? 'visible' : 'hidden'}`}
+                                style={{ transition: 'opacity 0.7s' }}
                             />
                         </div>
                     ))}
@@ -137,11 +139,11 @@ const Todo = () => {
                 <div className={`relative rounded-md shadow-lg item-center`}>
                     <div
                         className={`last-box ${inputBgClass} py-2.5 pl-4 pr-4 block rounded-sm border ${boderColor} text-gray-400 focus: sm:text-base sm:leading-6 `} >
-                        <span> 
+                        <span>
                             {itemsLeft} item{itemsLeft !== 1 ? 's' : ''} left
                         </span>
                         <div className="sections flex">
-                        <p
+                            <p
                                 className={`cursor-pointer ${activeSection === 'All' ? 'text-blue-500' : 'text-gray-400'}`}
                                 onClick={() => handleSectionChange('All')}
                             >
