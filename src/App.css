@@ -41,8 +41,8 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
-    gap: 20rem;
-    margin-top: 5rem;
+    gap: 25rem;
+    margin-top: 7rem;
 }
 .todo-container h2 {
     color: white;
@@ -51,11 +51,11 @@ body {
     letter-spacing: 10px;
 }
 .todo-container img{
-    width: 1.2rem;
+    width: 1.4rem;
 }
 .input-box{
-    width: 30rem;
-    height: 3.5rem;
+    width: 35rem;
+    height: 4.5rem;
 }
 .box-container{
     display: flex;
@@ -67,32 +67,33 @@ cursor: pointer;
 .input-box input[type="checkbox"] {
     display: none;
 }
-
-.input-box label {
-    cursor: pointer;
+.checkmark {
     position: relative;
-    padding-left: 25px;
-    margin-right: 10px;
-    margin-top: -20.5px;
-}
-
-.input-box label::before {
-    content: "";
-    position: absolute;
+    display: inline-block;
+    width: 20px; 
+    height: 20px; 
     left: 0;
     top: 0;
-    width: 20px;
-    height: 20px;
+    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 50%;
-}
+    background-color: transparent; 
+  }
+
+  .flex.items-center input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(hsl(192,100%,67%),hsl(280,87%,65%)); 
+  }
+  .checkmark:hover{
+    cursor: pointer;
+    border: 1px solid hsl(280,87%,65%);
+  }
 .last-box{
-    width: 30rem;
-    height: 2.8rem;
+    width: 35rem;
+    height: 3.4rem;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 .sections{
     gap: 10px;
@@ -100,4 +101,13 @@ cursor: pointer;
 .sections p:hover{
     color: hsl(235, 19%, 35%);
     cursor: pointer;
+}
+.check-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.check-img img{
+    width: 9px;
+    height: 8px;
 }
