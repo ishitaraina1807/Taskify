@@ -1,6 +1,4 @@
-import React, { useReducer, useContext } from "react";
-import { AuthContext } from "./AuthContext"; 
-import { auth } from "./firebase"; 
+import React, { useReducer } from "react";
 
 const initialState = {
   user: null,
@@ -15,6 +13,8 @@ const authReducer = (state, action) => {
       return state;
   }
 };
+
+export const AuthContext = React.createContext(); // Declare AuthContext here
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
