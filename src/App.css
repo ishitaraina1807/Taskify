@@ -11,7 +11,30 @@
 body {
     font-family: 'Josefin Sans', sans-serif;
 }
-
+.bgtheme{
+    background-image: url(./images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: hsl(0, 0%, 98%);
+    transition: background-color var(--transition-duration),
+        color var(--transition-duration),
+        opacity var(--transition-duration),
+        transform var(--transition-duration);
+    opacity: 1;
+    transform: translateY(0);
+}
+.bgtheme-dark{
+    background-image: url(./images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: hsl(235, 21%, 11%);
+    transition: background-color var(--transition-duration),
+        color var(--transition-duration),
+        opacity var(--transition-duration),
+        transform var(--transition-duration);
+    opacity: 1;
+    transform: translateY(0);
+}
 .dark-theme {
     background-image: url(./images/bg-desktop-dark.jpg);
     background-repeat: no-repeat;
@@ -43,6 +66,12 @@ body {
     justify-content: center;
     gap: 25rem;
     margin-top: 7rem;
+}
+.auth-container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 25rem;
 }
 .todo-container h2 {
     color: white;
