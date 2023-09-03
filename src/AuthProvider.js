@@ -8,13 +8,12 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       return { ...state, user: action.payload };
-    // Add more cases as needed for logging out or other actions
     default:
       return state;
   }
 };
 
-export const AuthContext = React.createContext(); // Declare AuthContext here
+export const AuthContext = React.createContext(); 
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
