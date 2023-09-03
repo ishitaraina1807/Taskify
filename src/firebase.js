@@ -5,13 +5,13 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAleFmSXaTywmAyNhkPE5ipOX__psawzTY",
-  authDomain: "test-webd.firebaseapp.com",
-  projectId: "test-webd",
-  storageBucket: "test-webd.appspot.com",
-  messagingSenderId: "173670500690",
-  appId: "1:173670500690:web:bc57e658a783220889528b",
-  measurementId: "G-ZXK0TEKNCM"
+  apiKey: "AIzaSyD6o6NHd7sXBaaQuoiHUX2Wjq9FqWM_-3o",
+  authDomain: "taskify-b7ee5.firebaseapp.com",
+  projectId: "taskify-b7ee5",
+  storageBucket: "taskify-b7ee5.appspot.com",
+  messagingSenderId: "544703862561",
+  appId: "1:544703862561:web:37eaca50794d6a029a1060",
+  measurementId: "G-NEW5DWT2WT"
 };
 
 const app = initializeApp(firebaseConfig);
